@@ -5,7 +5,7 @@ import requests
 import yfinance as yf
 
 # Récupération du topic ntfy
-NTFY_TOPIC = os.environ.get("NTFY_TOPIC", "rbc_options_dgc_7841")
+NTFY_COV = os.environ.get("NTFY_COV", "Cov_Opt_PDA303")
 
 def send_ntfy(titre: str, message: str, priorite: str = "high", tags: str = "warning"):
     url = f"https://ntfy.sh/{NTFY_TOPIC}"
