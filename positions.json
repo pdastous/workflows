@@ -1,7 +1,7 @@
 [
   {
     "ticker": "ENB.TO",
-    "strike": 52.00,
+    "strike": 60.00,
     "expiry": "2027-08-20",
     "contracts": 33
   },
