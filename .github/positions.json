@@ -1,0 +1,14 @@
+[
+  {
+    "ticker": "ENB.TO",
+    "strike": 52.00,
+    "expiry": "2027-08-20",
+    "contracts": 33
+  },
+  {
+    "ticker": "RY.TO",
+    "strike": 165.00,
+    "expiry": "2027-10-15",
+    "contracts": 8
+  }
+]
