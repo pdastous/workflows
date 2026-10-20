@@ -8,7 +8,7 @@ import yfinance as yf
 NTFY_TOPIC = os.environ.get("NTFY_TOPIC", "Cov_Opt_PDA303")
 
 def send_ntfy(titre: str, message: str, priorite: str = "high", tags: str = "warning"):
-    url = f"https://ntfy.sh/{NTFY_TOPIC}"
+    url = f"https://ntfy.sh/Cov_Opt_PDA303"
     headers = {
         "Title": titre.encode("utf-8"),
         "Priority": priorite,  # "urgent", "high", "default"
