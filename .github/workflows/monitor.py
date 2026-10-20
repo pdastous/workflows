@@ -5,7 +5,7 @@ import requests
 import yfinance as yf
 
 # Récupère le nom du sujet ntfy défini dans les secrets GitHub
-NTFY_TOPIC = os.environ.get("NTFY_COV", "Cov_Opt_PDA303")
+NTFY_TOPIC = os.environ.get("NTFY_TOPIC", "Cov_Opt_PDA303")
 
 def send_ntfy(titre: str, message: str, priorite: str = "high", tags: str = "warning"):
     url = f"https://ntfy.sh/{NTFY_TOPIC}"
