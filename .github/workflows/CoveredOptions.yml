@@ -26,5 +26,5 @@ jobs:
 
       - name: Exécuter la surveillance
         env:
-          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          NTFY_TOPIC: ${{ secrets.NTFY_COV }}
         run: python monitor.py
