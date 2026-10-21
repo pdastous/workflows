@@ -8,12 +8,26 @@ NTFY_TOPIC = os.environ.get("NTFY_TOPIC", "rbc_options_dgc_7841")
 
 def send_ntfy(titre: str, message: str, priorite: str = "high", tags: str = "warning"):
     url = "https://ntfy.sh/Cov_Opt_PDA303"
-    headers = {
-        "Title": titre,
-        "Priority": priorite,  # "urgent", "high", "default", "low"
-        "Tags": tags
+    
+    # Conversion des priorités textuelles en niveaux numériques ntfy (1 à 5)
+    priority_map = {
+        "urgent": 5,
+        "high": 4,
+        "default": 3,
+        "low": 2,
+        "min": 1
     }
-    resp = requests.post(url, data=message.encode("utf-8"), headers=headers, timeout=15)
+    
+    payload = {
+        "topic": NTFY_TOPIC,
+        "title": titre,
+        "message": message,
+        "priority": priority_map.get(priorite, 3),
+        "tags": [t.strip() for t in tags.split(",") if t.strip()]
+    }
+    
+    # requests encode automatiquement le JSON en UTF-8 sans restriction de caractères
+    resp = requests.post(url, json=payload, timeout=15)
     resp.raise_for_status()
 
 def get_cours_actuel(ticker_symbol: str):
