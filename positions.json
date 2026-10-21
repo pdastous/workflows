@@ -1,5 +1,6 @@
 [
   {
+    "//":"Pas surveillé",
     "ticker": "ENB.TO",
     "strike": 52.00,
     "expiry": "2027-08-20",
@@ -16,6 +17,7 @@
     "div_amount": 1.76
   },
   {
+    "//":"Pas surveillé",
     "ticker": "FTS.TO",
     "strike": 58.00,
     "expiry": "2027-08-20",
@@ -24,6 +26,7 @@
     "div_amount": 0.67
   },
   {
+    "//":"Pas surveillé",
     "ticker": "CNR.TO",
     "strike": 165.00,
     "expiry": "2027-09-17",
@@ -32,6 +35,7 @@
     "div_amount": 0.92
   },
   {
+    "//":"Pas surveillé",
     "ticker": "T.TO",
     "strike": 24.00,
     "expiry": "2027-09-17",
@@ -40,6 +44,7 @@
     "div_amount": 0.1875
   },
   {
+    "//":"Pas surveillé",
     "ticker": "CNQ.TO",
     "strike": 50.00,
     "expiry": "2027-09-17",
@@ -48,6 +53,7 @@
     "div_amount": 0.625
   },
   {
+    "//":"Pas surveillé",
     "ticker": "NA.TO",
     "strike": 125.00,
     "expiry": "2027-09-17",
