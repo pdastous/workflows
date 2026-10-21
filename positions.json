@@ -6,5 +6,13 @@
     "contracts": 6,
     "ex_div": "2026-10-26",
     "div_amount": 1.76
+  },
+    {
+    "ticker": "CNQ.TO",
+    "strike": 77,
+    "expiry": "2026-11-20",
+    "contracts": 6,
+    "ex_div": "2026-09-11",
+    "div_amount": 0.62
   }
 ]
