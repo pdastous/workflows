@@ -4,10 +4,10 @@ from datetime import datetime, date
 import requests
 import yfinance as yf
 
-NTFY_TOPIC = os.environ.get("NTFY_TOPIC", "rbc_options_dgc_7841")
+NTFY_TOPIC = os.environ.get("NTFY_TOPIC", "Surveillance des options couvertes")
 
 def send_ntfy(titre: str, message: str, priorite: str = "high", tags: str = "warning"):
-    url = "https://ntfy.sh/Cov_Opt_PDA303"
+    url = "https://ntfy.sh/Cov_Opt_PDA303/"
     
     # Conversion des priorités textuelles en niveaux numériques ntfy (1 à 5)
     priority_map = {
