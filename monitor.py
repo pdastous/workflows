@@ -4,12 +4,10 @@ from datetime import datetime, date
 import requests
 import yfinance as yf
 
-# Récupération du topic ntfy
-NTFY_COV = os.environ.get("NTFY_COV", "Cov_Opt_PDA303")
+NTFY_TOPIC = os.environ.get("NTFY_TOPIC", "rbc_options_dgc_7841")
 
 def send_ntfy(titre: str, message: str, priorite: str = "high", tags: str = "warning"):
-    url = f"https://ntfy.sh/Cov_Opt_PDA303"
-    # Dans requests, les headers doivent être des chaînes str (pas de .encode())
+    url = f"https://ntfy.sh/Cov_Opt_PDA303}"
     headers = {
         "Title": titre,
         "Priority": priorite,
@@ -19,10 +17,8 @@ def send_ntfy(titre: str, message: str, priorite: str = "high", tags: str = "war
     resp.raise_for_status()
 
 def get_cours_actuel(ticker_symbol: str):
-    """Récupère le dernier cours de manière robuste sur yfinance."""
     stock = yf.Ticker(ticker_symbol)
     try:
-        # 1. Tentative via fast_info (accès par attribut)
         cours = getattr(stock.fast_info, "last_price", None)
         if cours is not None:
             return float(cours)
@@ -30,7 +26,6 @@ def get_cours_actuel(ticker_symbol: str):
         pass
 
     try:
-        # 2. Repli via l'historique du jour
         hist = stock.history(period="1d")
         if not hist.empty:
             return float(hist["Close"].iloc[-1])
@@ -47,7 +42,7 @@ def analyser_positions():
         positions = json.load(f)
 
     today = date.today()
-    print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Début de l'analyse ({len(positions)} positions)...")
+    print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Démarrage de l'analyse ({len(positions)} positions)...")
 
     for pos in positions:
         ticker_symbol = pos["ticker"]
@@ -63,9 +58,38 @@ def analyser_positions():
 
         ratio = cours / strike
         is_expiry_day = (jours_restants == 0)
-        print(f"• {ticker_symbol} : Cours = {cours:.2f} $ | Strike = {strike:.2f} $ (Ratio : {ratio:.1%})")
+        print(f"• {ticker_symbol} : Cours = {cours:.2f} $ | Strike = {strike:.2f} $")
 
-        # 1. Option dans le cours (ITM) -> Actions menacées
+        # -----------------------------------------------------------------
+        # 1. SURVEILLANCE DU RISQUE D'ASSIGNATION ANTICIPÉE (EX-DIVIDENDE)
+        # -----------------------------------------------------------------
+        if "ex_div" in pos and pos["ex_div"]:
+            ex_div_date = datetime.strptime(pos["ex_div"], "%Y-%m-%d").date()
+            jours_avant_ex_div = (ex_div_date - today).days
+            div_montant = float(pos.get("div_amount", 0.0))
+
+            # Alerte si l'option est ITM dans la fenêtre critique (J-2 à J-1 avant ex-div)
+            if 0 < jours_avant_ex_div <= 2 and cours >= strike:
+                valeur_intrinseque = cours - strike
+                send_ntfy(
+                    titre=f"🚨 RISQUE ASSIGNATION ANTICIPÉE : {ticker_symbol}",
+                    message=(
+                        f"Date ex-dividende dans {jours_avant_ex_div} j ({pos['ex_div']}) !\n"
+                        f"Dividende à verser : {div_montant:.2f} $ / action\n"
+                        f"Cours : {cours:.2f} $ | Strike : {strike:.2f} $\n\n"
+                        f"👉 RÈGLE CRITIQUE RBC DI :\n"
+                        f"Vérifiez le prix du call sur RBC. Si sa valeur extrinsèque "
+                        f"(Prix Call - {valeur_intrinseque:.2f} $) est inférieure à {div_montant:.2f} $, "
+                        f"l'acheteur exercera cette nuit.\n"
+                        f"Action : Exécutez un Roll Out avant 15h30 pour conserver les actions et le dividende !"
+                    ),
+                    priorite="urgent",
+                    tags="moneybag,rotating_light"
+                )
+
+        # -----------------------------------------------------------------
+        # 2. CAS CRITIQUE : Dans le cours (ITM à l'échéance ou en cours)
+        # -----------------------------------------------------------------
         if cours >= strike:
             if is_expiry_day:
                 send_ntfy(
@@ -93,7 +117,9 @@ def analyser_positions():
                     tags="warning,chart_with_upwards_trend"
                 )
 
-        # 2. Vigilance proximité du strike (98% à 99.9%)
+        # -----------------------------------------------------------------
+        # 3. CAS VIGILANCE : Proximité du Strike (98% à 99.9%)
+        # -----------------------------------------------------------------
         elif ratio >= 0.98:
             if is_expiry_day:
                 send_ntfy(
