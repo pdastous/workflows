@@ -9,9 +9,9 @@
   },
   {
     "ticker": "RY.TO",
-    "strike": 165.00,
-    "expiry": "2027-10-15",
-    "contracts": 8,
+    "strike": 292,
+    "expiry": "2026-11-20",
+    "contracts": 6,
     "ex_div": "2026-10-26",
     "div_amount": 1.76
   },
