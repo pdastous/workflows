@@ -1,0 +1,58 @@
+[
+  {
+    "ticker": "ENB.TO",
+    "strike": 52.00,
+    "expiry": "2027-08-20",
+    "contracts": 33,
+    "ex_div": "2026-11-13",
+    "div_amount": 0.97
+  },
+  {
+    "ticker": "RY.TO",
+    "strike": 292,
+    "expiry": "2026-11-20",
+    "contracts": 6,
+    "ex_div": "2026-10-26",
+    "div_amount": 1.76
+  },
+  {
+    "ticker": "FTS.TO",
+    "strike": 58.00,
+    "expiry": "2027-08-20",
+    "contracts": 28,
+    "ex_div": "2026-11-17",
+    "div_amount": 0.67
+  },
+  {
+    "ticker": "CNR.TO",
+    "strike": 165.00,
+    "expiry": "2027-09-17",
+    "contracts": 13,
+    "ex_div": "2026-06-09",
+    "div_amount": 0.92
+  },
+  {
+    "ticker": "T.TO",
+    "strike": 24.00,
+    "expiry": "2027-09-17",
+    "contracts": 170,
+    "ex_div": "2026-09-10",
+    "div_amount": 0.1875
+  },
+  {
+    "ticker": "CNQ.TO",
+    "strike": 50.00,
+    "expiry": "2027-09-17",
+    "contracts": 44,
+    "ex_div": "2026-09-11",
+    "div_amount": 0.625
+  },
+  {
+    "ticker": "NA.TO",
+    "strike": 125.00,
+    "expiry": "2027-09-17",
+    "contracts": 11,
+    "ex_div": "2026-09-28",
+    "div_amount": 1.32
+  }
+]
