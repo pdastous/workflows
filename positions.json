@@ -2,43 +2,57 @@
   {
     "ticker": "ENB.TO",
     "strike": 52.00,
-    "expiry": "2026-11-20",
-    "contracts": 33
+    "expiry": "2027-08-20",
+    "contracts": 33,
+    "ex_div": "2027-08-13",
+    "div_amount": 0.915
   },
   {
     "ticker": "RY.TO",
     "strike": 165.00,
-    "expiry": "2026-11-20",
-    "contracts": 8
+    "expiry": "2027-10-15",
+    "contracts": 8,
+    "ex_div": "2027-09-24",
+    "div_amount": 1.42
   },
   {
     "ticker": "FTS.TO",
     "strike": 58.00,
-    "expiry": "2026-11-20",
-    "contracts": 28
+    "expiry": "2027-08-20",
+    "contracts": 28,
+    "ex_div": "2027-08-18",
+    "div_amount": 0.615
   },
   {
     "ticker": "CNR.TO",
     "strike": 165.00,
-    "expiry": "2026-11-20",
-    "contracts": 13
+    "expiry": "2027-09-17",
+    "contracts": 13,
+    "ex_div": "2027-09-08",
+    "div_amount": 0.845
   },
   {
     "ticker": "T.TO",
     "strike": 24.00,
-    "expiry": "2026-11-20",
-    "contracts": 170
+    "expiry": "2027-09-17",
+    "contracts": 170,
+    "ex_div": "2027-09-09",
+    "div_amount": 0.402
   },
   {
     "ticker": "CNQ.TO",
     "strike": 50.00,
-    "expiry": "2026-11-20",
-    "contracts": 44
+    "expiry": "2027-09-17",
+    "contracts": 44,
+    "ex_div": "2027-09-14",
+    "div_amount": 0.562
   },
   {
     "ticker": "NA.TO",
     "strike": 125.00,
-    "expiry": "2026-11-20",
-    "contracts": 11
+    "expiry": "2027-09-17",
+    "contracts": 11,
+    "ex_div": "2027-09-28",
+    "div_amount": 1.10
   }
 ]
