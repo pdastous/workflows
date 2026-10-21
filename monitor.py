@@ -4,12 +4,12 @@ from datetime import datetime, date
 import requests
 import yfinance as yf
 
-NTFY_TOPIC = os.environ.get("NTFY_TOPIC", "Surveillance des options couvertes")
+NTFY_TOPIC = os.environ.get("NTFY_TOPIC", "Cov_Opt_PDA303")
 
 def send_ntfy(titre: str, message: str, priorite: str = "high", tags: str = "warning"):
-    url = "https://ntfy.sh/Cov_Opt_PDA303/"
+    # L'adresse doit être STRICTEMENT "https://ntfy.sh" (sans topic, sans slash à la fin)
+    url = "https://ntfy.sh"
     
-    # Conversion des priorités textuelles en niveaux numériques ntfy (1 à 5)
     priority_map = {
         "urgent": 5,
         "high": 4,
@@ -19,14 +19,14 @@ def send_ntfy(titre: str, message: str, priorite: str = "high", tags: str = "war
     }
     
     payload = {
-        "topic": NTFY_TOPIC,
+        # Le topic est nettoyé et envoyé dans les données JSON uniquement
+        "topic": NTFY_TOPIC.strip().strip("/"),
         "title": titre,
         "message": message,
         "priority": priority_map.get(priorite, 3),
         "tags": [t.strip() for t in tags.split(",") if t.strip()]
     }
     
-    # requests encode automatiquement le JSON en UTF-8 sans restriction de caractères
     resp = requests.post(url, json=payload, timeout=15)
     resp.raise_for_status()
 
