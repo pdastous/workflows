@@ -166,7 +166,7 @@ def analyser_positions():
     if alertes_declenchees == 0:
         details_marche = "\n".join(resume_lignes)
         send_ntfy(
-            titre="🟢 Statut RBC : 100 % Sécurisé",
+            titre="🟢 Options couvertes analysées",
             message=(
                 f"Exécution réussie ({heure_actuelle}).\n"
                 f"Aucune menace d'assignation détectée.\n\n"
