@@ -1,9 +1,9 @@
 [
   {
     "ticker": "RY.TO",
-    "strike": 292,
-    "expiry": "2026-11-20",
-    "contracts": 6,
+    "strike": 300,
+    "expiry": "2026-12-18",
+    "contracts": 7,
     "ex_div": "2026-10-26",
     "div_amount": 1.76
   },
