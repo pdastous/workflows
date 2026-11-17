@@ -6,5 +6,21 @@
     "contracts": 7,
     "ex_div": "2026-10-26",
     "div_amount": 1.76
+  },
+    {
+    "ticker": "CPX.TO",
+    "strike": 68,
+    "expiry": "2026-12-18",
+    "contracts": 28,
+    "ex_div": "2026-12-30",
+    "div_amount": 0.7
+  },
+    {
+    "ticker": "GEI.TO",
+    "strike": 34,
+    "expiry": "2026-12-18",
+    "contracts": 36,
+    "ex_div": "2026-12-30",
+    "div_amount": 0.45
   }
 ]
