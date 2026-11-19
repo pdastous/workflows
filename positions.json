@@ -1,10 +1,10 @@
 [
   {
     "ticker": "RY.TO",
-    "strike": 300,
+    "strike": 280,
     "expiry": "2026-12-18",
     "contracts": 7,
-    "ex_div": "2026-10-26",
+    "ex_div": "2027-01-26",
     "div_amount": 1.76
   },
     {
@@ -21,6 +21,14 @@
     "expiry": "2026-12-18",
     "contracts": 36,
     "ex_div": "2026-12-30",
+    "div_amount": 0.45
+  },
+    {
+    "ticker": "FTS.TO",
+    "strike": 86,
+    "expiry": "2026-12-18",
+    "contracts": 25,
+    "ex_div": "2027-02-17",
     "div_amount": 0.45
   }
 ]
