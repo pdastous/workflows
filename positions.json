@@ -29,6 +29,14 @@
     "expiry": "2026-12-18",
     "contracts": 25,
     "ex_div": "2027-02-17",
-    "div_amount": 0.45
+    "div_amount": 0.67
+  },
+    {
+    "ticker": "NA.TO",
+    "strike": 210,
+    "expiry": "2026-12-18",
+    "contracts": 10,
+    "ex_div": "2026-12-26",
+    "div_amount": 1.32
   }
 ]
